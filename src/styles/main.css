@@ -1,0 +1,447 @@
+:root {
+    --gradient-main: linear-gradient(137deg, #DA28FF 3.34%, #7FCCFF 92.15%);
+    --gradient-secondary: linear-gradient(
+            216deg,
+            rgba(0, 0, 0, 0.00) 0.4%,
+            rgba(21, 5, 52, 0.64) 20%,
+            rgba(0, 0, 0, 0.86) 27%,
+            rgba(9, 1, 25, 0.95) 35%,
+            rgba(0, 0, 0, 0.95) 67%,
+            rgba(5, 1, 14, 0.95) 84%);
+    --blue1: #141131;
+    --blue2: #070B33;
+    --light: #FFF;
+    --purple: #d613fc9e;
+}
+
+body {
+    font-family: -apple-system, SF Pro Display, sans-serif;
+    background: var(--gradient-main);
+    margin: 0;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: -5svh;
+    width: 100%;
+    height: 17svh;
+    border-radius: 50%;
+    background: var(--purple);
+    filter: blur(50px);
+    z-index: 0;
+    animation: pulsate 3s infinite ease-in-out;
+}
+
+@keyframes pulsate {
+    0%, 100% {
+        width: 100%;
+        height: 17svh;
+        filter: blur(50px);
+        top: -5svh;
+    }
+    50% {
+        top: 0;
+        width: 70%;
+        height: 18svh;
+        filter: blur(60px);
+    }
+}
+
+.loader_wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--blue1);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 15vw;
+    height: 15vw;
+    border: 2vw solid var(--light);
+    border-bottom-color: var(--purple);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    background: var(--gradient-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+@supports (height: 100svh) {
+    .wrapper {
+        height: 100svh;
+    }
+}
+
+.bg-images {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    transform: translate(0, -250px) rotate(9deg);
+    left: -10%;
+    right: -8%;
+    top: -6%;
+    bottom: -10%;
+    clip-path: inset(-10%);
+    overflow: visible;
+}
+
+.bg-images .col:not(:last-child) {
+    margin-right: 1.9vw;
+}
+
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1.8svh;
+}
+
+.cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.4vw;
+    height: 5.4vw;
+    position: absolute;
+    top: 5svh;
+    left: 5vw;
+    padding: 0;
+    z-index: 2;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.cross svg {
+    width: 3.2vw;
+    height: 3.2vw;
+}
+
+.bg-images .col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-images .col img:not(:last-child) {
+    margin-bottom: 1.9vw;
+}
+
+.bg-images .col img {
+    width: 30vw;
+    height: 51.2vw;
+    object-fit: cover;
+}
+
+.col {
+    animation: moveVertically 5s infinite ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes moveVertically {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(var(--random-y));
+    }
+}
+
+.title {
+    color: var(--light);
+    text-align: center;
+    text-shadow: 0 0 12.8vw rgba(4, 3, 26, 0.83);
+    font-size: 6.1svh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 5.7svh;
+    letter-spacing: 1px;
+}
+
+.features {
+    color: var(--light);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 6vw;
+
+    margin-bottom: 6svh;
+}
+
+.feature {
+    width: 28vw;
+    height: 20.8svh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    overflow: hidden;
+    position: relative;
+    padding: 2.9vw 2vw;
+    box-sizing: border-box;
+    border-radius: 7px;
+    outline: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 0 21px rgba(255, 130, 228, 0.24);
+    background: linear-gradient(180deg, rgb(79 146 211 / 45%), rgba(255, 130, 228, .23) 63%, rgba(6, 9, 37, .56) 76.68%, #15072f);
+}
+
+.feature:not(:last-child) {
+    margin-right: 1.9vw;
+}
+
+.feature_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature p {
+    position: relative;
+    z-index: 1;
+    color: var(--light);
+    font-size: 1.9svh;
+}
+
+.selectors {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0 6.4vw;
+    margin-bottom: 4.4svh;
+    width: 100%;
+}
+
+.selector {
+    color: var(--light);
+    box-sizing: border-box;
+    min-height: 8.4svh;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8.53vw;
+    padding: 1svh 9.3svh 1svh 3.6svh;
+
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.selector div:last-child {
+    margin-left: 5vw;
+}
+
+.selector:not(:last-child) {
+    margin-bottom: 1.2svh;
+}
+
+
+.selector.active {
+    background: rgba(255, 255, 255, 0.3);
+    outline: 1px solid var(--light);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+
+.details {
+    font-size: 2.4svh;
+}
+
+.price {
+    font-size: 2.4svh;
+    opacity: 0.7;
+}
+
+.details {
+    max-width: 38vw;
+}
+
+.details_title {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.details_subtitle{
+    opacity: 0.7;
+}
+
+.badge {
+    position: absolute;
+    right: 6.4vw;
+    top: 0;
+    transform: translateY(-50%);
+    padding: 3px 22px;
+    background: var(--light);
+    color: var(--blue1);
+    max-height: 5.33vw;
+    border-radius: 10px;
+    font-size: 2svh;
+    font-weight: 700;
+    text-transform: uppercase;
+    animation: focus 1.5s infinite ease-in-out;
+}
+
+@keyframes focus {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-60%) scale(1.03);
+    }
+}
+
+.btn-submit {
+    font-family: SF Pro Display, sans-serif;
+    color: var(--blue2);
+    background: var(--light);
+    font-weight: 600;
+    font-size: 3svh;
+    border-radius: 8.53vw;
+    height: 8.4svh;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.terms {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    font-size: 3.5vw;
+    max-width: 95vw;
+    min-width: 68vw;
+}
+
+.terms a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.terms a:not(:last-child) {
+    margin-right: 3vw;
+}
+
+/* ТЕКСТ, КОТОРЫЙ НЕ ДОЛЖЕН ВЫПОЛНЯТЬ ПЕРЕНОС СТРОКИ */
+.details_subtitle,
+.price,
+.details_title {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+@media only screen
+and (min-width: 375px)
+and (min-height: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+    .content {
+        margin-bottom: 3.7svh;
+    }
+
+    .cross {
+        top: 8svh;
+        left: 2.3svh;
+    }
+
+    .bg-images {
+        left: -13%;
+        right: -13%;
+        top: -20%;
+    }
+
+    .selectors {
+        margin-bottom: 5svh;
+    }
+
+    .selector:not(:last-child) {
+        margin-bottom: 1svh;
+    }
+
+    .btn-submit {
+        height: 7.1svh;
+        font-size: 2.5svh;
+    }
+
+    .selector {
+        min-height: 7.1svh;
+    }
+
+    .details, .price {
+        font-size: 1.9svh;
+    }
+
+    .badge {
+        font-size: 1.6svh;
+    }
+
+    .feature {
+        height: 16svh;
+        padding: 1.9vw 1.8vw;
+    }
+
+    .feature p {
+        font-size: 1.4svh;
+    }
+
+    .title {
+        margin-bottom: 4.6svh;
+        font-size: 5.2svh;
+        line-height: 105%;
+        font-weight: 700;
+    }
+}
+
+@media only screen
+and (min-width: 864px) {
+    .selectors {
+        width: 40vw;
+    }
+
+    .feature {
+        height: 34svh;
+    }
+}
